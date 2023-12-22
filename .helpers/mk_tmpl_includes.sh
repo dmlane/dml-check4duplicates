@@ -12,18 +12,27 @@ DOCXX
 
 # Fail if any of these commands are missing (bumpver not needed by this script
 #                                            but needed by the project)
-require_commands brew gsed
+require_commands gsed
 [ $PROJECT_NAME ] || fail "Expected to find PROJECT_NAME from MAKE environment"
+[ $WORK_DIR ] || fail "Expected to find WORK_DIR from MAKE environment"
+[ $HELPER ] || fail "Expected to find HELPER from MAKE environment"
 
-WF=$(mktemp)
+WF=$(mktemp -d)
+highlight "Getting a list of packages from Poetry"
+poetry show --only main >${WF}/poetry.packages
+
 highlight "Fetching python resources for ^$PROJECT_NAME^"
-brew update-python-resources -p $PROJECT_NAME >$WF
+${HELPER}/get_pypi_info.py ${WF}/poetry.packages >${WF}.include
 if [ $? -ne 0 ] ; then
-	rm $WF
-	fail "'brew update-python-resources $PROJECT_NAME' returned error"
+	rm -rf $WF
+	fail "'${HELPER}/get_pypi_info.py ${WF}/poetry.package' returned error"
 fi
 
-gsed "/#---START-RESOURCES---/,/#---END-RESOURCES---/!b;//!d;/#---START-RESOURCES---/r ${WF}" ${PROJECT_NAME}.tmpl >${PROJECT_NAME}.tmpl.new
+gsed "/#---START-RESOURCES---/,/#---END-RESOURCES---/!b;//!d;/#---START-RESOURCES---/r ${WF}.include" ${PROJECT_NAME}.tmpl >${PROJECT_NAME}.tmpl.new
+if [ $? -ne 0 ] ; then
+	rm -rf ${WF}
+	fail "gsed had a problem"
+fi
 mv -f ${PROJECT_NAME}.tmpl.new ${PROJECT_NAME}.tmpl
 
-rm ${WF}
+rm -rf ${WF}
