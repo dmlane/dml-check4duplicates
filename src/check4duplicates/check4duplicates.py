@@ -61,7 +61,7 @@ class Check4Duplicates:
             "-V",
             "--version",
             action="version",
-            version=version("dmltools"),
+            version=version("dml-check4duplicates"),
             help="Print the version number",
         )
         self.parser.add_argument(
