@@ -90,7 +90,7 @@ check:
 
 $(PROJECT_NAME).tmpl: poetry.lock
 	$(DISPLAY)
-	@-$(HELPER)/mk_tmpl_includes.sh
+	@$(HELPER)/mk_tmpl_includes.sh
 
 # Generate include file
 $(WORK_DIR)/.versions: pyproject.toml

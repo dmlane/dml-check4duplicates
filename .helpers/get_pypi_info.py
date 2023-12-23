@@ -6,8 +6,6 @@ import sys
 
 from pypi_simple import PyPISimple
 
-# DEFAULT_INDEX_URL = "https://pypi.io/pypi"
-
 if len(sys.argv) < 2:
     print(f"Usage: {os.path.basename(sys.argv[0])} SPEC_FILE")
     sys.exit(1)

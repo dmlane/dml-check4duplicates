@@ -39,12 +39,11 @@ pytest = ">=7.3.1"
 pytest-resource-path = "^1.3.0"
 setuptools = "^68.2.2"
 pre-commit = "^3.5.0"
-homebrew-pypi-poet = "^0.10.0"
 pypi-simple = "^1.4.0"
 
 [tool.poetry.scripts]
 # Section managed with vi
-pdfmerge = "check4duplicates.check4duplicates:main"
+check4duplicates = "check4duplicates.check4duplicates:main"
 
 [[tool.poetry.source]]
 name = "repositories.fury"
