@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dml-check4duplicates"
-version = "2024.1.1001-rc0"		# Published version is managed BY bumper
+version = "2024.1.1002-rc0"		# Published version is managed BY bumper
 description = "Search for identical file in any of the supplied directories"
 authors = ["Dave Lane <cheery.koala5370@fastmail.com>"]
 license = "MIT"
@@ -55,7 +55,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.bumpver]
-current_version = "2024.1.1001-rc0"
+current_version = "2024.1.1002-rc0"
 version_pattern = "YYYY.MM.BUILD[-PYTAGNUM]"
 commit_message = "bump version {old_version} -> {new_version}"
 commit = true
