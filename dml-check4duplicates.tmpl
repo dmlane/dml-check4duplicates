@@ -1,0 +1,20 @@
+class DmlCheck4duplicates < Formula
+  include Language::Python::Virtualenv
+
+  desc "Search for identical file in any of the supplied directories"
+  homepage "https://github.com/dmlane/dml-check4duplicates"
+  url "#URL#"
+  sha256 "#SHA256#"
+  license "MIT"
+
+  depends_on "python@3.11"
+
+  def install
+    virtualenv_install_with_resources
+  end
+  #---START-RESOURCES---
+  #---END-RESOURCES---
+  test do
+    system "#{bin}/check4duplicates", "--version"
+  end
+end
