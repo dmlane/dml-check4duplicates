@@ -18,6 +18,7 @@ packages = [
 
 [tool.poetry.dependencies]
 python = ">=3.11,<4"
+macos-tags = "^1.5.1"
 
 [tool.poetry.group.docs]
 optional = true
@@ -42,7 +43,7 @@ setuptools = "^68.2.2"
 
 [tool.poetry.scripts]
 # Section managed with vi
-#dml-check4duplicates = "dml-check4duplicates.dml-check4duplicates:main"
+check4duplicates = "check4duplicates.check4duplicates:main"
 
 [[tool.poetry.source]]
 name = "repositories.fury"
